@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:movies_app/controller/dashboard_controller.dart';
+import 'package:movies_app/controller/favourite_controller.dart';
 import 'package:movies_app/controller/home_controller.dart';
 import 'package:movies_app/controller/splash_controller.dart';
 import 'package:movies_app/views/dashboard.dart';
@@ -25,6 +26,7 @@ final List<GetPage> getPages = <GetPage>[
     binding: BindingsBuilder(() {
       Get.lazyPut(() => DashboardController());
       Get.lazyPut(() => HomeController());
+      Get.lazyPut(() => FavouriteController());
     }),
   ),
 ];
