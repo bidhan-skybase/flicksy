@@ -3,6 +3,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:movies_app/models/movie_model.dart';
 
+import '../utils/helpers/storage_helpers.dart';
+
 class MovieCard extends StatelessWidget {
   static String imageUrl = dotenv.env['IMAGE_URL'].toString();
   MovieModel movie;
@@ -77,21 +79,26 @@ class MovieCard extends StatelessWidget {
                 ),
               ),
 
-              Container(
-                height: 42,
-                width: Get.width,
-                margin: EdgeInsets.only(top: 8),
-                decoration: BoxDecoration(
-                  color: Color(0xff393E46),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Center(
-                  child: Text(
-                    "Favorite",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
+              InkWell(
+                onTap: (){
+                  StorageHelpers.saveFavouriteMovie(movie);
+                },
+                child: Container(
+                  height: 42,
+                  width: Get.width,
+                  margin: EdgeInsets.only(top: 8),
+                  decoration: BoxDecoration(
+                    color: Color(0xff393E46),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "Favorite",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),

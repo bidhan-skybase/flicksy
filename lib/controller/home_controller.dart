@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:movies_app/models/movie_model.dart';
 import 'package:movies_app/utils/constants/api.dart';
+import 'package:movies_app/utils/helpers/storage_helpers.dart';
 
 class HomeController extends GetxController {
   RxList<MovieModel> movies = RxList();
@@ -28,5 +29,9 @@ class HomeController extends GetxController {
     movies.value = moviesFromJson(data['results']);
     isLoading.value = false;
     print(response.body);
+  }
+
+  void addToFavourites(MovieModel movie){
+    StorageHelpers.saveFavouriteMovie(movie);
   }
 }
